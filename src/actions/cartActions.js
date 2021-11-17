@@ -68,7 +68,7 @@ export const handleDecrement = (itemId) => (dispatch) => {
   });
 };
 
-export const emptyCart = (dispatch) => {
+export const emptyCart = (n) => (dispatch) => {
   dispatch({
     type: EMPTY_CART,
   });

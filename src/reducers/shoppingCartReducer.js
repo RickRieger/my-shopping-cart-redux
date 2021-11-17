@@ -1,13 +1,10 @@
 import {
   GET_PRODUCTS,
-  GET_SHOPPING_CART,
-  GET_SHOPPING_CART_TOTAL,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   EMPTY_CART,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
-  PRODUCTS_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -64,8 +61,6 @@ export default (state = initialState, action) => {
         ],
       };
 
-
-
     case INCREMENT_QUANTITY:
       const incrementItemFound = state.shoppingCart.find(
         (item) => item.id === action.payload.itemId
@@ -104,9 +99,9 @@ export default (state = initialState, action) => {
         shoppingCart: state.shoppingCart,
       };
     case EMPTY_CART:
-      return {
-        shoppingCart: [],
-      };
+      console.log('empty PAB');
+      return { ...state, shoppingCart: [] };
+
     default:
       return state;
   }

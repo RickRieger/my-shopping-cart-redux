@@ -24,9 +24,9 @@ const CartPage = ({
 }) => {
   const total = useShoppingCartTotal(shoppingCart);
 
-  // if (shoppingCart.length < 1) {
-  //   return <Layout>theres no items to show here</Layout>;
-  // }
+  if (shoppingCart.length < 1) {
+    return <Layout>theres no items to show here</Layout>;
+  }
 
   return (
     <Layout>

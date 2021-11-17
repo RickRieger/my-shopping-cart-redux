@@ -1,3 +1,3 @@
 import { combineReducers } from 'redux';
-import logReducer from './logReducer';
-export default combineReducers({log:logReducer});
+import shoppingCartReducer from './shoppingCartReducer';
+export default combineReducers({cart:shoppingCartReducer});

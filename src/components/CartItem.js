@@ -8,16 +8,10 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useContext } from 'react';
-import ShoppingCartContext from '../context/shoppingCart/shoppingCartContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const CartItem = (props) => {
-  const { item } = props;
-
-  const shoppingCartContext = useContext(ShoppingCartContext);
-  const { removeFromCart, handleIncrement, handleDecrement } =
-    shoppingCartContext;
-
+  const { item, handleIncrement, handleDecrement, removeFromCart } = props;
   const buttons = [
     <Button key='one' onClick={() => handleIncrement(item.id)}>
       increase

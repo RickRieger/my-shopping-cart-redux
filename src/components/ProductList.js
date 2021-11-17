@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import ShoppingCartContext from '../context/shoppingCart/shoppingCartContext';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Box,
   Card,
@@ -12,10 +13,20 @@ import {
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Button from '@mui/material/Button';
+import { getProducts, addItemToCart } from '../actions/cartActions';
+import CircularIndeterminate from './Preloader';
+const ProductList = ({ cart: { products }, getProducts, addItemToCart }) => {
 
-const ProductList = () => {
-  const shoppingCartContext = useContext(ShoppingCartContext);
-  const { products, addItemToCart } = shoppingCartContext;
+  useEffect(() => {
+    getProducts();
+    //eslint-disable-next-line
+  }, []);
+
+
+
+  if (products === null) {
+    return <CircularIndeterminate />;
+  }
 
   return (
     <Box>
@@ -80,4 +91,10 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+ProductList.propTypes = {
+  cart: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({ cart: state.cart });
+
+export default connect(mapStateToProps, { getProducts, addItemToCart })(ProductList);

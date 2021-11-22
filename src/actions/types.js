@@ -6,4 +6,7 @@ export const EMPTY_CART = 'EMPTY_CART';
 export const INCREMENT_QUANTITY = 'INCREMENT_QUANTITY';
 export const DECREMENT_QUANTITY = 'DECREMENT_QUANTITY';
 export const PRODUCTS_ERROR = 'PRODUCTS_ERROR';
+export const GET_USER = 'GET_USER';
+export const USER_ERROR = 'USER_ERROR';
+
 

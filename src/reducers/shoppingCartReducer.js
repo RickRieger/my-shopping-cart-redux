@@ -5,6 +5,7 @@ import {
   EMPTY_CART,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
+  PRODUCTS_ERROR
 } from '../actions/types';
 
 const initialState = {
@@ -17,18 +18,17 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      console.log('reducer working');
       return {
         ...state,
         products: action.payload,
       };
-    // case PRODUCTS_ERROR:
-    //   console.error(action.payload);
-    //   return {
-    //     ...state,
-    //     error: action.payload,
-    //     loading: false,
-    //   };
+    case PRODUCTS_ERROR:
+      console.error(action.payload);
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
     case ADD_TO_CART:
       const { id, title, price, image } = action.payload;
       console.log(state);

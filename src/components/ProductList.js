@@ -14,15 +14,20 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Button from '@mui/material/Button';
 import { getProducts, addItemToCart } from '../actions/cartActions';
+import { getUser } from '../actions/userActions';
 import CircularIndeterminate from './Preloader';
-const ProductList = ({ cart: { products }, getProducts, addItemToCart }) => {
-
+const ProductList = ({
+  cart: { products },
+  user: {user},
+  getProducts,
+  addItemToCart,
+  getUser,
+}) => {
   useEffect(() => {
     getProducts();
+    getUser();
     //eslint-disable-next-line
   }, []);
-
-
 
   if (products === null) {
     return <CircularIndeterminate />;
@@ -93,8 +98,13 @@ const ProductList = ({ cart: { products }, getProducts, addItemToCart }) => {
 
 ProductList.propTypes = {
   cart: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({ cart: state.cart });
+const mapStateToProps = (state) => ({ cart: state.cart, user: state.user });
 
-export default connect(mapStateToProps, { getProducts, addItemToCart })(ProductList);
+export default connect(mapStateToProps, {
+  getProducts,
+  addItemToCart,
+  getUser,
+})(ProductList);

@@ -12,8 +12,6 @@ import {
 
 export const getProducts = () => async (dispatch) => {
   try {
-    console.log('getting products');
-
     const res = await fetch('/products');
     const data = await res.json();
     dispatch({
@@ -23,7 +21,7 @@ export const getProducts = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: PRODUCTS_ERROR,
-      payload: err.response.data,
+      payload: err,
     });
   }
 };

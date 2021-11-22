@@ -48,5 +48,6 @@
             "price": 89900,
             "image": "https://m.media-amazon.com/images/I/51hVgv45sOS._AC_UL320_.jpg"
         }
-    ]
+    ],
+    "user":{"name":"Rick Rieger"}
 }
